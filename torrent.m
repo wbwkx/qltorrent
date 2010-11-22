@@ -100,7 +100,7 @@ NSData *getTorrentPreview(NSURL *url)
 {
     // Load template HTML
     NSString *templateFile = [NSString stringWithContentsOfFile:[[NSBundle bundleWithIdentifier: @"uk.co.dbrweb.qltorrent"]
-                                        pathForResource:@"torrentpreview" ofType:@"html"]];
+                                        pathForResource:@"torrentpreview" ofType:@"html"] encoding:NSUTF8StringEncoding error:NULL];
     NSDictionary *torrentInfo = getTorrentInfo(url);
     NSMutableString *html = [NSMutableString stringWithString:templateFile];
 
