@@ -17,3 +17,6 @@ build/*
 xcuserdata
 profile
 *.moved-aside
+
+# BitTorrent
+*.torrent
