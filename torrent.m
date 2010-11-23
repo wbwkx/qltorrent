@@ -3,21 +3,19 @@
 
 NSString *stringFromFileSize(NSInteger theSize)
 {
-    /*
-     From http://snippets.dzone.com/posts/show/3038
-     */
     float floatSize = theSize;
-    if (theSize<1023)
-        return([NSString stringWithFormat:@"%i bytes",theSize]);
+
+    if (theSize < 1024)
+        return([NSString stringWithFormat:@"%i bytes", theSize]);
     floatSize = floatSize / 1024;
-    if (floatSize<1023)
-        return([NSString stringWithFormat:@"%1.1f KB",floatSize]);
+    if (floatSize < 1024)
+        return([NSString stringWithFormat:@"%1.1f KB", floatSize]);
     floatSize = floatSize / 1024;
-    if (floatSize<1023)
-        return([NSString stringWithFormat:@"%1.1f MB",floatSize]);
+    if (floatSize < 1024)
+        return([NSString stringWithFormat:@"%1.1f MB", floatSize]);
     floatSize = floatSize / 1024;
-    
-    return([NSString stringWithFormat:@"%1.1f GB",floatSize]);
+
+    return([NSString stringWithFormat:@"%1.1f GB", floatSize]);
 }
 
 NSString *stringFromData(NSData *torrent, NSString *key)
