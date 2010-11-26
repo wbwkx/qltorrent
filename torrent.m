@@ -60,7 +60,7 @@ NSDictionary *getTorrentInfo(NSURL *url)
 
     NSInteger totalSize = 0;
     NSMutableArray *allFiles = [NSMutableArray array];
-    for (int i = 0; i < [filesData count]; i++) {
+    for (unsigned int i = 0; i < [filesData count]; i++) {
         NSData *currentFileData = [filesData objectAtIndex:i];
         NSString *currentSize = [currentFileData valueForKey:@"length"];
         
@@ -71,7 +71,7 @@ NSDictionary *getTorrentInfo(NSURL *url)
         NSMutableString *currentFilePath = [NSMutableString string];
         
         // Looping over path segments"
-        for(int path_i = 0; path_i < [[currentFileData valueForKey:@"path"] count] ; path_i++) {
+        for(unsigned int path_i = 0; path_i < [[currentFileData valueForKey:@"path"] count] ; path_i++) {
             NSData *currentSegmentData = [[currentFileData valueForKey:@"path"] objectAtIndex:path_i];
             
             NSString *currentPathSegment = [NSString stringWithUTF8String:[currentSegmentData bytes]];
@@ -131,7 +131,7 @@ NSData *getTorrentPreview(NSURL *url)
     if(files != NULL)
     {
         NSMutableString *torrentFileString = [NSMutableString string];
-        for(int i = 0; i < [files count]; i++)
+        for(unsigned int i = 0; i < [files count]; i++)
         {
             NSMutableDictionary *currentFile = [files objectAtIndex:i];
             NSString *currentName = [currentFile objectForKey:@"filename"];
