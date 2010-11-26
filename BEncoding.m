@@ -169,7 +169,7 @@ typedef struct {
 	
     if (data->offset >= data->length) return nil;
 
-	if (data->bytes[data->offset] < '0' | data->bytes[data->offset] > '9')
+	if (data->bytes[data->offset] < '0' || data->bytes[data->offset] > '9')
 		return nil; // Needed because we must fail to create a dictionary if it isn't a string.
 	
 	// strings are special; they start with a number so we don't move by one.
