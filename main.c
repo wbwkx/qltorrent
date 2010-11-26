@@ -203,6 +203,7 @@ void *QuickLookGeneratorPluginFactory(CFAllocatorRef allocator,CFUUIDRef typeID)
     QuickLookGeneratorPluginType *result;
     CFUUIDRef                 uuid;
 
+    allocator = allocator;
         /* If correct type is being requested, allocate an
          * instance of kQLGeneratorTypeID and return the IUnknown interface.
          */
