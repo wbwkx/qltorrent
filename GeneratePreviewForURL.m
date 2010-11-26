@@ -20,9 +20,16 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
     }
     
     return noErr;
+    // avoid warnings
+    thisInterface = thisInterface;
+    contentTypeUTI = contentTypeUTI;
+    options = options;
 }
 
 void CancelPreviewGeneration(void* thisInterface, QLPreviewRequestRef preview)
 {
     // implement only if supported
+    // avoid warnings
+    thisInterface = thisInterface;
+    preview = preview;
 }
