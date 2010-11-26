@@ -16,7 +16,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this framework.  If not, see <http://www.gnu.org/licenses/>.
 //
-//  Copyright Â© Nathan Ollerenshaw 2008.
+//  Copyright (c) Nathan Ollerenshaw 2008.
 //
 
 #import "BEncoding.h"
