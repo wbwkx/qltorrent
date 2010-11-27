@@ -6,7 +6,7 @@ NSString *stringFromFileSize(NSInteger theSize)
     float floatSize = theSize;
 
     if (theSize < 1024)
-        return([NSString stringWithFormat:@"%i bytes", theSize]);
+        return([NSString stringWithFormat:@"%i B", theSize]);
     floatSize = floatSize / 1024;
     if (floatSize < 1024)
         return([NSString stringWithFormat:@"%1.1f KB", floatSize]);
