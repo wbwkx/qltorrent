@@ -9,19 +9,19 @@ like firing up your client just to see what's in it.
 
 ## Installation ##
 
-1. Download and extract the [tarball][tarball] or [zipball][zipball]
-of the project.
+1. Download the last compiled version of the project: [version
+1.0][qltorrent].
 
-2. Open the file `qltorrent.xcodeproj` with Xcode.
+2. Copy the file `qltorrent.qlgenerator` into (if the folder is not
+present, then you will need to create it first):
 
-3. Build the project by clicking on the menu `Build/Build` (or
-`<cmd>+B`).
+   * `~/Library/QuickLook`, if _just you_ want to use this plugin, or
+     into
 
-4. Copy the generated file `qltorrent.qlgenerator` which is in
-`build/Debug` or `build/Release` folder into `~/Library/QuickLook` in
-your home folder.
+   * `/Library/QuickLook`, if you want _any user_ on this machine to use
+     plugin.
 
-5. You may need to reset Quick Look Server and all Quick Look
+3. You may need to reset Quick Look Server and all Quick Look
 client's generator cache: open up Terminal and type `qlmanage -r`.
 
 ## Thanks ##
@@ -39,8 +39,7 @@ A detailed specification wiki maintained by the development community:
 
 Article about _Bencode_ on [Wikipedia][wikipedia].
 
-[tarball]: https://github.com/sillage/qltorrent/tarball/master
-[zipball]: https://github.com/sillage/qltorrent/zipball/master
+[qltorrent]: https://github.com/downloads/sillage/qltorrent/qltorrent.qlgenerator
 [framework]: https://code.google.com/p/cocoabtutils/
 [bep3]: http://bittorrent.org/beps/bep_0003.html
 [torrentspec]: http://wiki.theory.org/BitTorrentSpecification
