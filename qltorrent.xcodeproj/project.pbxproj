@@ -7,26 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C05A19C06CAA52B00D84F6F /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C05A19B06CAA52B00D84F6F /* GeneratePreviewForURL.m */; };
-		61E3BCFB0870B4F2002186A0 /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E3BCFA0870B4F2002186A0 /* GenerateThumbnailForURL.m */; };
-		679BE0BB0F47FCD20001980F /* torrent.h in Headers */ = {isa = PBXBuildFile; fileRef = 679BE0B90F47FCD20001980F /* torrent.h */; };
-		679BE0BC0F47FCD20001980F /* torrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 679BE0BA0F47FCD20001980F /* torrent.m */; };
-		679BE0C50F47FDCC0001980F /* BEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 679BE0C30F47FDCC0001980F /* BEncoding.h */; };
-		679BE0C60F47FDCC0001980F /* BEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 679BE0C40F47FDCC0001980F /* BEncoding.m */; };
-		679BE33E0F47FF7E0001980F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679BE3380F47FF7E0001980F /* WebKit.framework */; };
-		679BE33F0F47FF7E0001980F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679BE3390F47FF7E0001980F /* Cocoa.framework */; };
-		679BE3400F47FF7E0001980F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679BE33A0F47FF7E0001980F /* QuickLook.framework */; };
-		679BE3410F47FF7E0001980F /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679BE33B0F47FF7E0001980F /* ApplicationServices.framework */; };
-		679BE3420F47FF7E0001980F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679BE33C0F47FF7E0001980F /* CoreServices.framework */; };
-		679BE3430F47FF7E0001980F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679BE33D0F47FF7E0001980F /* CoreFoundation.framework */; };
-		679BE4120F4818DF0001980F /* torrentpreview.html in Resources */ = {isa = PBXBuildFile; fileRef = 679BE4110F4818DF0001980F /* torrentpreview.html */; };
-		8D576312048677EA00EA77CD /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB77B6FE84183AC02AAC07 /* main.c */; settings = {ATTRIBUTES = (); }; };
-		8D5B49A804867FD3000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B49A704867FD3000E48DA /* InfoPlist.strings */; };
+		0FACB8F412BF641D00C7AEDF /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FACB8F312BF641D00C7AEDF /* QuickLook.framework */; };
+		0FACB8F612BF641D00C7AEDF /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FACB8F512BF641D00C7AEDF /* ApplicationServices.framework */; };
+		0FACB8F812BF641D00C7AEDF /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FACB8F712BF641D00C7AEDF /* CoreServices.framework */; };
+		0FACB8FA12BF641D00C7AEDF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FACB8F912BF641D00C7AEDF /* CoreFoundation.framework */; };
+		0FACB90D12BF646F00C7AEDF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB77B6FE84183AC02AAC07 /* main.c */; };
+		0FACB90E12BF647400C7AEDF /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E3BCFA0870B4F2002186A0 /* GenerateThumbnailForURL.m */; };
+		0FACB90F12BF647700C7AEDF /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C05A19B06CAA52B00D84F6F /* GeneratePreviewForURL.m */; };
+		0FACB91012BF647A00C7AEDF /* torrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 679BE0BA0F47FCD20001980F /* torrent.m */; };
+		0FACB91112BF647D00C7AEDF /* BEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 679BE0C40F47FDCC0001980F /* BEncoding.m */; };
+		0FACB91312BF654100C7AEDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FACB91212BF654100C7AEDF /* Foundation.framework */; };
+		0FBA3BB612BF666900311BAC /* torrentpreview.html in Resources */ = {isa = PBXBuildFile; fileRef = 679BE4110F4818DF0001980F /* torrentpreview.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08FB77B6FE84183AC02AAC07 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		0FACB8F212BF641D00C7AEDF /* qltorrent.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = qltorrent.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FACB8F312BF641D00C7AEDF /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		0FACB8F512BF641D00C7AEDF /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		0FACB8F712BF641D00C7AEDF /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		0FACB8F912BF641D00C7AEDF /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		0FACB8FC12BF641E00C7AEDF /* QLTorrent-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QLTorrent-Prefix.pch"; sourceTree = "<group>"; };
+		0FACB91212BF654100C7AEDF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2C05A19B06CAA52B00D84F6F /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
 		61E3BCFA0870B4F2002186A0 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
 		679BE0B90F47FCD20001980F /* torrent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = torrent.h; sourceTree = "<group>"; };
@@ -40,21 +43,19 @@
 		679BE33C0F47FF7E0001980F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		679BE33D0F47FF7E0001980F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		679BE4110F4818DF0001980F /* torrentpreview.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = torrentpreview.html; sourceTree = "<group>"; };
-		8D576316048677EA00EA77CD /* qltorrent.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = qltorrent.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D576317048677EA00EA77CD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8D576313048677EA00EA77CD /* Frameworks */ = {
+		0FACB8ED12BF641D00C7AEDF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				679BE33E0F47FF7E0001980F /* WebKit.framework in Frameworks */,
-				679BE33F0F47FF7E0001980F /* Cocoa.framework in Frameworks */,
-				679BE3400F47FF7E0001980F /* QuickLook.framework in Frameworks */,
-				679BE3410F47FF7E0001980F /* ApplicationServices.framework in Frameworks */,
-				679BE3420F47FF7E0001980F /* CoreServices.framework in Frameworks */,
-				679BE3430F47FF7E0001980F /* CoreFoundation.framework in Frameworks */,
+				0FACB91312BF654100C7AEDF /* Foundation.framework in Frameworks */,
+				0FACB8F412BF641D00C7AEDF /* QuickLook.framework in Frameworks */,
+				0FACB8F612BF641D00C7AEDF /* ApplicationServices.framework in Frameworks */,
+				0FACB8F812BF641D00C7AEDF /* CoreServices.framework in Frameworks */,
+				0FACB8FA12BF641D00C7AEDF /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +69,8 @@
 				089C167CFE841241C02AAC07 /* Resources */,
 				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
 				19C28FB6FE9D52B211CA2CBB /* Products */,
+				0FACB8EA12BF641D00C7AEDF /* Other Sources */,
+				0FACB8EB12BF641D00C7AEDF /* Frameworks */,
 			);
 			name = qltorrent;
 			sourceTree = "<group>";
@@ -109,10 +112,30 @@
 			name = Source;
 			sourceTree = "<group>";
 		};
+		0FACB8EA12BF641D00C7AEDF /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0FACB8FC12BF641E00C7AEDF /* QLTorrent-Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		0FACB8EB12BF641D00C7AEDF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0FACB91212BF654100C7AEDF /* Foundation.framework */,
+				0FACB8F312BF641D00C7AEDF /* QuickLook.framework */,
+				0FACB8F512BF641D00C7AEDF /* ApplicationServices.framework */,
+				0FACB8F712BF641D00C7AEDF /* CoreServices.framework */,
+				0FACB8F912BF641D00C7AEDF /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		19C28FB6FE9D52B211CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D576316048677EA00EA77CD /* qltorrent.qlgenerator */,
+				0FACB8F212BF641D00C7AEDF /* qltorrent.qlgenerator */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,36 +143,33 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		8D57630E048677EA00EA77CD /* Headers */ = {
+		0FACB8EE12BF641D00C7AEDF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				679BE0BB0F47FCD20001980F /* torrent.h in Headers */,
-				679BE0C50F47FDCC0001980F /* BEncoding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8D57630D048677EA00EA77CD /* qltorrent */ = {
+		0FACB8F112BF641D00C7AEDF /* qltorrent */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CA3261E0896AD4900168862 /* Build configuration list for PBXNativeTarget "qltorrent" */;
+			buildConfigurationList = 0FACB90812BF641E00C7AEDF /* Build configuration list for PBXNativeTarget "qltorrent" */;
 			buildPhases = (
-				8D57630E048677EA00EA77CD /* Headers */,
-				8D57630F048677EA00EA77CD /* Resources */,
-				8D576311048677EA00EA77CD /* Sources */,
-				8D576313048677EA00EA77CD /* Frameworks */,
-				8D576315048677EA00EA77CD /* Rez */,
+				0FACB8EC12BF641D00C7AEDF /* Sources */,
+				0FACB8ED12BF641D00C7AEDF /* Frameworks */,
+				0FACB8EE12BF641D00C7AEDF /* Headers */,
+				0FACB8EF12BF641D00C7AEDF /* Resources */,
+				0FACB8F012BF641D00C7AEDF /* Rez */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = qltorrent;
-			productInstallPath = /Library/QuickLook;
-			productName = qltorrent;
-			productReference = 8D576316048677EA00EA77CD /* qltorrent.qlgenerator */;
+			productName = QLTorrent;
+			productReference = 0FACB8F212BF641D00C7AEDF /* qltorrent.qlgenerator */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -171,25 +191,24 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D57630D048677EA00EA77CD /* qltorrent */,
+				0FACB8F112BF641D00C7AEDF /* qltorrent */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8D57630F048677EA00EA77CD /* Resources */ = {
+		0FACB8EF12BF641D00C7AEDF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D5B49A804867FD3000E48DA /* InfoPlist.strings in Resources */,
-				679BE4120F4818DF0001980F /* torrentpreview.html in Resources */,
+				0FBA3BB612BF666900311BAC /* torrentpreview.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXRezBuildPhase section */
-		8D576315048677EA00EA77CD /* Rez */ = {
+		0FACB8F012BF641D00C7AEDF /* Rez */ = {
 			isa = PBXRezBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -199,15 +218,15 @@
 /* End PBXRezBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8D576311048677EA00EA77CD /* Sources */ = {
+		0FACB8EC12BF641D00C7AEDF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D576312048677EA00EA77CD /* main.c in Sources */,
-				2C05A19C06CAA52B00D84F6F /* GeneratePreviewForURL.m in Sources */,
-				61E3BCFB0870B4F2002186A0 /* GenerateThumbnailForURL.m in Sources */,
-				679BE0BC0F47FCD20001980F /* torrent.m in Sources */,
-				679BE0C60F47FDCC0001980F /* BEncoding.m in Sources */,
+				0FACB90D12BF646F00C7AEDF /* main.c in Sources */,
+				0FACB91012BF647A00C7AEDF /* torrent.m in Sources */,
+				0FACB91112BF647D00C7AEDF /* BEncoding.m in Sources */,
+				0FACB90E12BF647400C7AEDF /* GenerateThumbnailForURL.m in Sources */,
+				0FACB90F12BF647700C7AEDF /* GeneratePreviewForURL.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,32 +244,77 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2CA3261F0896AD4900168862 /* Debug */ = {
+		0FACB90612BF641E00C7AEDF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+			};
+			name = Debug;
+		};
+		0FACB90712BF641E00C7AEDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		0FACB90912BF641E00C7AEDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QLTorrent-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = $HOME/Library/QuickLook;
-				PRODUCT_NAME = qltorrent;
+				INSTALL_PATH = /Library/QuickLook;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Debug;
 		};
-		2CA326200896AD4900168862 /* Release */ = {
+		0FACB90A12BF641E00C7AEDF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QLTorrent-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = $HOME/Library/QuickLook;
-				PRODUCT_NAME = qltorrent;
+				INSTALL_PATH = /Library/QuickLook;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = qlgenerator;
+			};
+			name = Release;
+		};
+		0FACB90B12BF641E00C7AEDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = QLTorrent;
+			};
+			name = Debug;
+		};
+		0FACB90C12BF641E00C7AEDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_NAME = QLTorrent;
 			};
 			name = Release;
 		};
@@ -258,9 +322,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = /System/Library/Frameworks/;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-W",
@@ -275,9 +341,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = /System/Library/Frameworks/;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-W",
@@ -291,11 +359,13 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CA3261E0896AD4900168862 /* Build configuration list for PBXNativeTarget "qltorrent" */ = {
+		0FACB90812BF641E00C7AEDF /* Build configuration list for PBXNativeTarget "qltorrent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2CA3261F0896AD4900168862 /* Debug */,
-				2CA326200896AD4900168862 /* Release */,
+				0FACB90912BF641E00C7AEDF /* Debug */,
+				0FACB90A12BF641E00C7AEDF /* Release */,
+				0FACB90B12BF641E00C7AEDF /* Debug */,
+				0FACB90C12BF641E00C7AEDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -305,6 +375,8 @@
 			buildConfigurations = (
 				2CA326230896AD4900168862 /* Debug */,
 				2CA326240896AD4900168862 /* Release */,
+				0FACB90612BF641E00C7AEDF /* Debug */,
+				0FACB90712BF641E00C7AEDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
