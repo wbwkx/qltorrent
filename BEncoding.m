@@ -65,16 +65,16 @@ typedef struct {
 	char buffer[32]; // Small buffer to hold length strings. Needs to hold a 64bit number.
 	
 	memset(buffer, 0, sizeof(buffer)); // Ensure the buffer is zeroed
-
+	
 	if ([object isKindOfClass:[NSData class]]) 
 	{
 		// Encode a chunk of bytes from an NSData.
 		
 		snprintf(buffer, 32, "%lu:", (long unsigned int)[object length]);
-
+		
 		[data appendBytes:buffer length:strlen(buffer)];
 		[data appendData:object];
-
+		
 		return data;
 	} 
 	if ([object isKindOfClass:[NSString class]]) 
@@ -83,10 +83,10 @@ typedef struct {
 		
 		NSData *stringData = [object dataUsingEncoding:NSUTF8StringEncoding];
 		snprintf(buffer, 32, "%lu:", (long unsigned int)[stringData length]);
-
+		
 		[data appendBytes:buffer length:strlen(buffer)];
 		[data appendData:stringData];
-
+		
 		return data;
 	} 
 	else if ([object isKindOfClass:[NSNumber class]]) 
@@ -94,9 +94,9 @@ typedef struct {
 		// Encode an NSNumber
 		
 		snprintf(buffer, 32, "i%llue", [object longLongValue]);
-
+		
 		[data appendBytes:buffer length:strlen(buffer)];
-
+		
 		return data;
 	}
 	else if ([object isKindOfClass:[NSArray class]]) 
@@ -136,7 +136,7 @@ typedef struct {
 		[data appendBytes:"e" length:1];
 		return data;
 	}
-
+	
 	return nil;
 }
 
@@ -149,9 +149,9 @@ typedef struct {
 	
 	data->offset++; // We start on the i so we need to move by one.
 	if (data->offset >= data->length) return nil;
-    
+	
 	while (data->offset < data->length && data->bytes[data->offset] != 'e') {
-        [numberString appendFormat:@"%c", data->bytes[data->offset++]];
+		[numberString appendFormat:@"%c", data->bytes[data->offset++]];
 	}
 	
 	if (![[NSScanner scannerWithString:numberString] scanLongLong:&number])
@@ -167,8 +167,8 @@ typedef struct {
 	NSMutableString *dataLength = [NSMutableString string];
 	NSMutableData *decodedData = [NSMutableData data];
 	
-    if (data->offset >= data->length) return nil;
-
+	if (data->offset >= data->length) return nil;
+	
 	if (data->bytes[data->offset] < '0' || data->bytes[data->offset] > '9')
 		return nil; // Needed because we must fail to create a dictionary if it isn't a string.
 	
@@ -182,8 +182,8 @@ typedef struct {
 		return nil; // We must have overrun the end of the bencoded string.
 	
 	data->offset++;
-    if (data->offset+[dataLength integerValue] > data->length) return nil;
-
+	if (data->offset+[dataLength integerValue] > data->length) return nil;
+	
 	[decodedData appendBytes:data->bytes+data->offset length:[dataLength integerValue]];
 	
 	data->offset += [dataLength integerValue]; // Always move the offset off the end of the encoded item.
@@ -208,14 +208,14 @@ typedef struct {
 	NSMutableArray *array = [NSMutableArray array];
 	
 	assert(data->bytes[data->offset] == 'l');
-
+	
 	data->offset++; // Move off the l so we point to the first encoded item.
-    if (data->offset >= data->length) return nil;
-
+	if (data->offset >= data->length) return nil;
+	
 	while (data->offset < data->length && data->bytes[data->offset] != 'e') {
 		[array addObject:[BEncoding objectFromData:data]];
 	}
-
+	
 	data->offset++; // Always move off the end of the encoded item.
 	
 	return array;
@@ -230,8 +230,8 @@ typedef struct {
 	assert(data->bytes[data->offset] == 'd');
 	
 	data->offset++; // Move off the d so we point to the string key.
-    if (data->offset >= data->length) return nil;
-
+	if (data->offset >= data->length) return nil;
+	
 	while (data->offset < data->length && data->bytes[data->offset] != 'e') {
 		if (data->bytes[data->offset] >= '0' && data->bytes[data->offset] <= '9') {
 			// Dictionaries are a bencoded string with a bencoded value.
@@ -240,9 +240,9 @@ typedef struct {
 			if (key != nil && value != nil)
 				[dictionary setValue:value forKey:key];
 		}
-        else data->offset++;
+		else data->offset++;
 	}
-
+	
 	data->offset++; // Move off the e so we point to the next encoded item.
 	
 	return dictionary;
@@ -253,22 +253,22 @@ typedef struct {
 	/* Each of the decoders expect that the offset points to the first character
 	 * of the encoded entity, for example the i in the bencoded integer "i18e" */
 	
-    if (data->offset >= data->length) return nil;
-    
+	if (data->offset >= data->length) return nil;
+	
 	switch (data->bytes[data->offset]) {
-	case 'l':
-		return [BEncoding arrayFromEncodedData:data];
-		break;
-	case 'd':
-		return [BEncoding dictionaryFromEncodedData:data];
-		break;
-	case 'i':
-		return [BEncoding numberFromEncodedData:data];
-		break;
-	default:
-		if (data->bytes[data->offset] >= '0' && data->bytes[data->offset] <= '9')
-			return [BEncoding dataFromEncodedData:data];
-		break;
+		case 'l':
+			return [BEncoding arrayFromEncodedData:data];
+			break;
+		case 'd':
+			return [BEncoding dictionaryFromEncodedData:data];
+			break;
+		case 'i':
+			return [BEncoding numberFromEncodedData:data];
+			break;
+		default:
+			if (data->bytes[data->offset] >= '0' && data->bytes[data->offset] <= '9')
+				return [BEncoding dataFromEncodedData:data];
+			break;
 	}
 	
 	// If we reach here, it doesn't appear that this is bencoded data. So, we'll
@@ -285,7 +285,7 @@ typedef struct {
 	data.bytes = [sourceData bytes];
 	data.length = [sourceData length];
 	data.offset = 0;
-
+	
 	return data.bytes ? [BEncoding objectFromData:&data] : nil;
 }
 
