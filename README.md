@@ -18,8 +18,8 @@ present, then you will need to create it first):
    * `~/Library/QuickLook`, if _just you_ want to use this plugin, or
      into
 
-   * `/Library/QuickLook`, if you want _any user_ on this machine to use
-     plugin.
+   * `/Library/QuickLook`, if you want _any user_ on this machine to
+     use it.
 
 3. You may need to reset Quick Look Server and all Quick Look
 client's generator cache: open up Terminal and type `qlmanage -r`.
