@@ -9,8 +9,8 @@ like firing up your client just to see what's in it.
 
 ## Installation ##
 
-1. Download the last compiled version of the project: [version
-1.0][qltorrent].
+1. Download the last compiled version of the project:
+[version 1.0][qltorrent].
 
 2. Copy the file `qltorrent.qlgenerator` into (if the folder is not
 present, then you will need to create it first):
@@ -21,8 +21,8 @@ present, then you will need to create it first):
    * `/Library/QuickLook`, if you want _any user_ on this machine to
      use it.
 
-3. You may need to reset Quick Look Server and all Quick Look
-client's generator cache: open up Terminal and type `qlmanage -r`.
+3. You may need to reset Quick Look Server and all Quick Look client's
+generator cache: open up Terminal and type `qlmanage -r`.
 
 ## Thanks ##
 
@@ -31,8 +31,8 @@ Ollerenshaw ([Cocoa BitTorrent Utilities][framework]).  Thanks to him.
 
 ## Info ##
 
-The BitTorrent Protocol Specification: [Official protocol
-specification][bep3].
+The BitTorrent Protocol Specification:
+[Official protocol specification][bep3].
 
 A detailed specification wiki maintained by the development community:
 [BitTorrent Specification][torrentspec].
