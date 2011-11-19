@@ -45,6 +45,9 @@ NSDictionary *getTorrentInfo(NSURL *url)
 	if (torrent == nil)
 		return nil;
 	
+    // write `/tmp/torrent.plist' to see dictionary content
+    [torrent writeToFile:@"/tmp/torrent.plist" atomically:YES];
+    
 	NSDictionary *infoData = [torrent objectForKey:@"info"];
 	
 	// Retrive interesting data
@@ -91,6 +94,9 @@ NSDictionary *getTorrentInfo(NSURL *url)
 	if(isPrivate != NULL) [ret setObject:isPrivate forKey:@"isPrivate"];
 	if(allFiles != NULL) [ret setObject:allFiles forKey:@"files"];
 	[ret setObject:[NSNumber numberWithInteger:totalSize] forKey:@"totalSize"];
+    
+    // write `/tmp/ret.plist' to see dictionary content
+    [ret writeToFile:@"/tmp/ret.plist" atomically:YES];
 	
 	return ret;
 }
