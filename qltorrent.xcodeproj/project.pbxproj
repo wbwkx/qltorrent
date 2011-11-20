@@ -21,6 +21,8 @@
 		7B13B21C1478868200E8B6A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FACB91212BF654100C7AEDF /* Foundation.framework */; };
 		7B13B21F1478868200E8B6A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B13B21E1478868200E8B6A0 /* main.m */; };
 		7B13B2231478868200E8B6A0 /* StaticQLTorrentTests.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B13B2221478868200E8B6A0 /* StaticQLTorrentTests.1 */; };
+		7B13B2271478880400E8B6A0 /* BEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 679BE0C40F47FDCC0001980F /* BEncoding.m */; };
+		7B13B2281478880600E8B6A0 /* torrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 679BE0BA0F47FCD20001980F /* torrent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -305,6 +307,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B13B21F1478868200E8B6A0 /* main.m in Sources */,
+				7B13B2281478880600E8B6A0 /* torrent.m in Sources */,
+				7B13B2271478880400E8B6A0 /* BEncoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
