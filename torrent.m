@@ -1,6 +1,10 @@
 #import "torrent.h"
 #import "BEncoding.h"
 
+NSString *stringFromFileSize(NSInteger theSize);
+NSString *stringFromData(NSDictionary *torrent, NSString *key);
+void replacer(NSMutableString *html, NSString *replaceThis, NSString *withThis, NSString *defaultString);
+
 NSString *stringFromFileSize(NSInteger theSize)
 {
 	float floatSize = theSize;
@@ -101,13 +105,17 @@ NSDictionary *getTorrentInfo(NSURL *url)
 	return ret;
 }
 
-NSData *getTorrentPreview(NSURL *url)
+// FLFL: tempFile argument is for tests only
+NSData *getTorrentPreview(NSURL *url, NSString *tempFile)
 {
 	// Load template HTML
 	NSString *templateFile = [NSString stringWithContentsOfFile:[[NSBundle bundleWithIdentifier: @"com.github.sillage.qltorrent"]
 																					 pathForResource:@"torrentpreview" ofType:@"html"]
 																		encoding:NSUTF8StringEncoding
 																			error:NULL];
+	// FLFL: line below is for tests
+	if (templateFile == nil) templateFile = tempFile;
+	
 	NSDictionary *torrentInfo = getTorrentInfo(url);
 	if (torrentInfo == nil) return nil;
 	

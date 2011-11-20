@@ -13,7 +13,7 @@
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
 	NSLog(@"Quicklook torrent thingy going!");
-	CFDataRef data = (CFDataRef) getTorrentPreview((NSURL *)url);
+	CFDataRef data = (CFDataRef) getTorrentPreview((NSURL *)url, nil);
 	if(data){
 		CFDictionaryRef props = (CFDictionaryRef) [NSDictionary dictionary];
 		QLPreviewRequestSetDataRepresentation(preview, data, kUTTypeHTML, props);
