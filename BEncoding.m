@@ -267,7 +267,7 @@ typedef struct {
 			break;
 		default:
 			if (data->bytes[data->offset] >= '0' && data->bytes[data->offset] <= '9')
-				return [BEncoding stringFromEncodedData:data];
+				return [BEncoding dataFromEncodedData:data];
 			break;
 	}
 	

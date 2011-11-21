@@ -81,7 +81,7 @@ int main (int argc, const char *argv[]) {
 	
 	@autoreleasepool {
 		NSData *torrentPreview = getTorrentPreview([NSURL URLWithString:[NSString stringWithCString:argv[1] encoding:NSUTF8StringEncoding]], torrentHTML);
-		NSLog(@"%@", torrentPreview);
+		NSLog(@"%@", [[NSString alloc] initWithData:torrentPreview encoding:NSUTF8StringEncoding]);
 	}
 	
 	return 0;
