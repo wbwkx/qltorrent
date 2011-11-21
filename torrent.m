@@ -8,7 +8,6 @@ NSMutableDictionary *replaceDataByStringsInDic(NSDictionary *dic, NSString *exce
 
 
 NSString *stringFromFileSize(long long int theSize);
-NSString *stringFromData(NSDictionary *torrent, NSString *key);
 void replacer(NSMutableString *html, NSString *replaceThis, NSString *withThis, NSString *defaultString);
 
 NSString *pathFromPathComponents(NSArray *pc);
@@ -28,15 +27,6 @@ NSString *stringFromFileSize(long long int theSize) {
 	floatSize = floatSize / 1024;
 
 	return([NSString stringWithFormat:@"%1.1f GB", floatSize]);
-}
-
-NSString *stringFromData(NSDictionary *torrent, NSString *key) {
-	NSData *rawkey = [torrent objectForKey:key];
-	NSString *strdata = [[[NSString alloc] initWithBytes:[rawkey bytes]
-																 length:[rawkey length]
-															  encoding:NSUTF8StringEncoding]
-								autorelease];
-	return strdata;
 }
 
 void replacer(NSMutableString *html, NSString *replaceThis, NSString *withThis, NSString *defaultString) {
@@ -121,8 +111,8 @@ NSData *getTorrentPreview(NSURL *url, NSString *tempFile)
 
 	long long int totalSize = 0;
 	NSArray *files = [torrentInfo objectForKey:@"files"];
+	NSMutableString *torrentFileString = [NSMutableString string];
 	if (files != nil) {
-		NSMutableString *torrentFileString = [NSMutableString string];
 		for (NSDictionary *curFile in [torrentInfo objectForKey:@"files"]) {
 			NSString *currentSize = @"N/D";
 			NSNumber *nn = [curFile objectForKey:@"length"];
@@ -138,9 +128,9 @@ NSData *getTorrentPreview(NSURL *url, NSString *tempFile)
 			  pathFromPathComponents(currentPathComponents),
 			  currentSize]];
 		}
-		replacer(html, @"{TORRENT_FILES}", torrentFileString,
-					@"<tr><td>[Cannot list files]</td><td>N/D</td></tr>");
 	}
+	replacer(html, @"{TORRENT_FILES}", torrentFileString,
+				@"<tr><td>[Cannot list files]</td><td>N/D</td></tr>");
 	
 	if (totalSize == 0) {
 		NSNumber *n = [torrentInfo objectForKey:@"length"];
