@@ -18,7 +18,25 @@
 		0FACB91112BF647D00C7AEDF /* BEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 679BE0C40F47FDCC0001980F /* BEncoding.m */; };
 		0FACB91312BF654100C7AEDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FACB91212BF654100C7AEDF /* Foundation.framework */; };
 		0FBA3BB612BF666900311BAC /* torrentpreview.html in Resources */ = {isa = PBXBuildFile; fileRef = 679BE4110F4818DF0001980F /* torrentpreview.html */; };
+		7B13B21C1478868200E8B6A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FACB91212BF654100C7AEDF /* Foundation.framework */; };
+		7B13B21F1478868200E8B6A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B13B21E1478868200E8B6A0 /* main.m */; };
+		7B13B2231478868200E8B6A0 /* StaticQLTorrentTests.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B13B2221478868200E8B6A0 /* StaticQLTorrentTests.1 */; };
+		7B13B2271478880400E8B6A0 /* BEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 679BE0C40F47FDCC0001980F /* BEncoding.m */; };
+		7B13B2281478880600E8B6A0 /* torrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 679BE0BA0F47FCD20001980F /* torrent.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7B13B2181478868200E8B6A0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				7B13B2231478868200E8B6A0 /* StaticQLTorrentTests.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -43,6 +61,10 @@
 		679BE33C0F47FF7E0001980F /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		679BE33D0F47FF7E0001980F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		679BE4110F4818DF0001980F /* torrentpreview.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = torrentpreview.html; sourceTree = "<group>"; };
+		7B13B21A1478868200E8B6A0 /* StaticQLTorrentTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StaticQLTorrentTests; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B13B21E1478868200E8B6A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7B13B2211478868200E8B6A0 /* StaticQLTorrentTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StaticQLTorrentTests-Prefix.pch"; sourceTree = "<group>"; };
+		7B13B2221478868200E8B6A0 /* StaticQLTorrentTests.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = StaticQLTorrentTests.1; sourceTree = "<group>"; };
 		8D576317048677EA00EA77CD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +81,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7B13B2171478868200E8B6A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B13B21C1478868200E8B6A0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -67,6 +97,7 @@
 			children = (
 				08FB77AFFE84173DC02AAC07 /* Source */,
 				089C167CFE841241C02AAC07 /* Resources */,
+				7B13B21D1478868200E8B6A0 /* StaticQLTorrentTests */,
 				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
 				19C28FB6FE9D52B211CA2CBB /* Products */,
 				0FACB8EA12BF641D00C7AEDF /* Other Sources */,
@@ -136,8 +167,27 @@
 			isa = PBXGroup;
 			children = (
 				0FACB8F212BF641D00C7AEDF /* qltorrent.qlgenerator */,
+				7B13B21A1478868200E8B6A0 /* StaticQLTorrentTests */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7B13B21D1478868200E8B6A0 /* StaticQLTorrentTests */ = {
+			isa = PBXGroup;
+			children = (
+				7B13B21E1478868200E8B6A0 /* main.m */,
+				7B13B2221478868200E8B6A0 /* StaticQLTorrentTests.1 */,
+				7B13B2201478868200E8B6A0 /* Supporting Files */,
+			);
+			path = StaticQLTorrentTests;
+			sourceTree = "<group>";
+		};
+		7B13B2201478868200E8B6A0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B13B2211478868200E8B6A0 /* StaticQLTorrentTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +222,23 @@
 			productReference = 0FACB8F212BF641D00C7AEDF /* qltorrent.qlgenerator */;
 			productType = "com.apple.product-type.bundle";
 		};
+		7B13B2191478868200E8B6A0 /* StaticQLTorrentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B13B2241478868200E8B6A0 /* Build configuration list for PBXNativeTarget "StaticQLTorrentTests" */;
+			buildPhases = (
+				7B13B2161478868200E8B6A0 /* Sources */,
+				7B13B2171478868200E8B6A0 /* Frameworks */,
+				7B13B2181478868200E8B6A0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StaticQLTorrentTests;
+			productName = StaticQLTorrentTests;
+			productReference = 7B13B21A1478868200E8B6A0 /* StaticQLTorrentTests */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -179,6 +246,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = Sillage;
 			};
 			buildConfigurationList = 2CA326220896AD4900168862 /* Build configuration list for PBXProject "qltorrent" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -195,6 +263,7 @@
 			projectRoot = "";
 			targets = (
 				0FACB8F112BF641D00C7AEDF /* qltorrent */,
+				7B13B2191478868200E8B6A0 /* StaticQLTorrentTests */,
 			);
 		};
 /* End PBXProject section */
@@ -230,6 +299,16 @@
 				0FACB91112BF647D00C7AEDF /* BEncoding.m in Sources */,
 				0FACB90E12BF647400C7AEDF /* GenerateThumbnailForURL.m in Sources */,
 				0FACB90F12BF647700C7AEDF /* GeneratePreviewForURL.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B13B2161478868200E8B6A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B13B21F1478868200E8B6A0 /* main.m in Sources */,
+				7B13B2281478880600E8B6A0 /* torrent.m in Sources */,
+				7B13B2271478880400E8B6A0 /* BEncoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +436,51 @@
 			};
 			name = Release;
 		};
+		7B13B2251478868200E8B6A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StaticQLTorrentTests/StaticQLTorrentTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7B13B2261478868200E8B6A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StaticQLTorrentTests/StaticQLTorrentTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -381,6 +505,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7B13B2241478868200E8B6A0 /* Build configuration list for PBXNativeTarget "StaticQLTorrentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B13B2251478868200E8B6A0 /* Debug */,
+				7B13B2261478868200E8B6A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
