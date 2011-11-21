@@ -79,10 +79,10 @@ int main (int argc, const char *argv[]) {
 		return 42;
 	}
 	
-	@autoreleasepool {
-		NSData *torrentPreview = getTorrentPreview([NSURL URLWithString:[NSString stringWithCString:argv[1] encoding:NSUTF8StringEncoding]], torrentHTML);
-		NSLog(@"%@", [[[NSString alloc] initWithData:torrentPreview encoding:NSUTF8StringEncoding] autorelease]);
-	}
+	NSAutoreleasePool *pool = [NSAutoreleasePool new];
+	NSData *torrentPreview = getTorrentPreview([NSURL URLWithString:[NSString stringWithCString:argv[1] encoding:NSUTF8StringEncoding]], torrentHTML);
+	NSLog(@"%@", [[[NSString alloc] initWithData:torrentPreview encoding:NSUTF8StringEncoding] autorelease]);
+	[pool drain]; pool = nil;
 	
 	return 0;
 }
