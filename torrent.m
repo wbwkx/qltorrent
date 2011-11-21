@@ -4,7 +4,7 @@
 id replaceDataByStringInObject(id obj, NSString *key, NSString *exceptionKey);
 
 NSArray *replaceDataByStringsInArray(NSArray *array, NSString *exceptionKey);
-NSDictionary *replaceDataByStringsInDic(NSDictionary *dic, NSString *exceptionKey);
+NSMutableDictionary *replaceDataByStringsInDic(NSDictionary *dic, NSString *exceptionKey);
 
 
 
@@ -59,7 +59,7 @@ NSArray *replaceDataByStringsInArray(NSArray *array, NSString *exceptionKey) {
 	return result;
 }
 
-NSDictionary *replaceDataByStringsInDic(NSDictionary *dic, NSString *exceptionKey) {
+NSMutableDictionary *replaceDataByStringsInDic(NSDictionary *dic, NSString *exceptionKey) {
 	NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:dic.count];
 	
 	for (id key in dic.allKeys) {
@@ -77,7 +77,9 @@ NSDictionary *getTorrentInfo(NSURL *url) {
 
 	if (![torrent isKindOfClass:[NSDictionary class]]) return nil;
 	
-	return replaceDataByStringsInDic(torrent, @"pieces");
+	NSMutableDictionary *result = replaceDataByStringsInDic(torrent, @"pieces");
+	
+	return [result objectForKey:@"info"];
 	
 #if 0
 	NSDictionary *infoData = [torrent objectForKey:@"info"];
