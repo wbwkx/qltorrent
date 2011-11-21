@@ -7,6 +7,10 @@ NSArray *replaceDataByStringsInArray(NSArray *array, NSString *exceptionKey);
 NSMutableDictionary *replaceDataByStringsInDic(NSDictionary *dic, NSString *exceptionKey);
 
 
+NSString *stringFromFileSize(NSInteger theSize);
+NSString *stringFromData(NSDictionary *torrent, NSString *key);
+void replacer(NSMutableString *html, NSString *replaceThis, NSString *withThis, NSString *defaultString);
+
 
 NSString *stringFromFileSize(NSInteger theSize) {
 	float floatSize = theSize;
@@ -42,7 +46,7 @@ void replacer(NSMutableString *html, NSString *replaceThis, NSString *withThis, 
 }
 
 id replaceDataByStringInObject(id obj, NSString *key, NSString *exceptionKey) {
-	if (![obj isKindOfClass:[NSData class]] || ![key isEqual:exceptionKey]) {
+	if (![obj isKindOfClass:[NSData class]] || [key isEqual:exceptionKey]) {
 		if      ([obj isKindOfClass:[NSDictionary class]]) return replaceDataByStringsInDic(obj, exceptionKey);
 		else if ([obj isKindOfClass:[NSArray class]])      return replaceDataByStringsInArray(obj, exceptionKey);
 		else                                               return obj;
@@ -128,17 +132,22 @@ NSDictionary *getTorrentInfo(NSURL *url) {
 	if(isPrivate != NULL) [ret setObject:isPrivate forKey:@"isPrivate"];
 	if(allFiles != NULL) [ret setObject:allFiles forKey:@"files"];
 	[ret setObject:[NSNumber numberWithInteger:totalSize] forKey:@"totalSize"];
-
+	
 	return ret;
 #endif
 }
 
-NSData *getTorrentPreview(NSURL *url) {
+// FLFL: tempFile argument is for tests only
+NSData *getTorrentPreview(NSURL *url, NSString *tempFile)
+{
 	// Load template HTML
 	NSString *templateFile = [NSString stringWithContentsOfFile:[[NSBundle bundleWithIdentifier:@"com.github.sillage.qltorrent"]
 																					 pathForResource:@"torrentpreview" ofType:@"html"]
 																		encoding:NSUTF8StringEncoding
 																			error:NULL];
+	// FLFL: line below is for tests
+	if (templateFile == nil) templateFile = tempFile;
+	
 	NSDictionary *torrentInfo = getTorrentInfo(url);
 	if (torrentInfo == nil) return nil;
 
