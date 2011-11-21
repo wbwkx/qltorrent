@@ -6,7 +6,7 @@
 
 /* -----------------------------------------------------------------------------
  Generate a preview for file
- 
+
  This function's job is to create preview for designated file
  ----------------------------------------------------------------------------- */
 
@@ -18,7 +18,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 		CFDictionaryRef props = (CFDictionaryRef) [NSDictionary dictionary];
 		QLPreviewRequestSetDataRepresentation(preview, data, kUTTypeHTML, props);
 	}
-	
+
 	return noErr;
 	// avoid warnings
 	thisInterface = NULL;
