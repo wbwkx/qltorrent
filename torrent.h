@@ -3,4 +3,4 @@
 
 NSDictionary *getTorrentInfo(NSURL *url);
 
-NSData *getTorrentPreview(NSURL *url);
+NSData *getTorrentPreview(NSURL *url, NSString *tempFile);

@@ -212,6 +212,8 @@ void *QuickLookGeneratorPluginFactory(CFAllocatorRef allocator,CFUUIDRef typeID)
         CFRelease(uuid);
         return result;
     }
+	
+	allocator = NULL;
         /* If the requested type is incorrect, return NULL. */
 	
 	/* Fixes a warning at compile time */
