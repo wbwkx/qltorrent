@@ -4,7 +4,7 @@
 NSString *stringFromFileSize(NSInteger theSize)
 {
 	float floatSize = theSize;
-	
+
 	if (theSize < 1024)
 		return([NSString stringWithFormat:@"%i B", theSize]);
 	floatSize = floatSize / 1024;
@@ -14,7 +14,7 @@ NSString *stringFromFileSize(NSInteger theSize)
 	if (floatSize < 1024)
 		return([NSString stringWithFormat:@"%1.1f MB", floatSize]);
 	floatSize = floatSize / 1024;
-	
+
 	return([NSString stringWithFormat:@"%1.1f GB", floatSize]);
 }
 
@@ -41,35 +41,35 @@ NSDictionary *getTorrentInfo(NSURL *url)
 	// Read raw file, and de-bencode
 	NSData *rawdata = [NSData dataWithContentsOfURL:url];
 	NSDictionary *torrent = [BEncoding objectFromEncodedData:rawdata];
-	
+
 	if (torrent == nil)
 		return nil;
-	
+
 	NSDictionary *infoData = [torrent objectForKey:@"info"];
-	
+
 	// Retrive interesting data
 	NSString *announce = stringFromData(torrent, @"announce");
-	
+
 	NSString *torrentName = stringFromData(infoData, @"name");
-	
+
 	NSString *length = [infoData objectForKey:@"length"];
-	
+
 	NSNumber *isPrivate = [NSNumber numberWithBool:[infoData objectForKey:@"private"] == NULL];
-	
+
 	// Get filenames/sizes
 	NSArray *filesData = [infoData objectForKey:@"files"];
-	
+
 	NSUInteger totalSize = 0;
 	NSMutableArray *allFiles = [NSMutableArray array];
 	for (NSDictionary *currentFileData in filesData) {
 		NSString *currentSize = [currentFileData objectForKey:@"length"];
-		
+
 		NSMutableDictionary *currentFile = [NSMutableDictionary dictionaryWithObject:currentSize forKey:@"length"];
-		
+
 		totalSize = totalSize + [currentSize integerValue];
-		
+
 		NSMutableString *currentFilePath = [NSMutableString string];
-		
+
 		// Looping over path segments"
 		for(NSData *currentSegmentData in [currentFileData objectForKey:@"path"]) {
 			NSString *currentPathSegment = [[[NSString alloc] initWithBytes:[currentSegmentData bytes]
@@ -81,9 +81,9 @@ NSDictionary *getTorrentInfo(NSURL *url)
 		[currentFile setObject:currentFilePath forKey:@"filename"];
 		[allFiles addObject:currentFile];
 	}
-	
+
 	// Store interesting data in dictionary, and return it
-	
+
 	NSMutableDictionary *ret = [NSMutableDictionary dictionary];
 	if(length != NULL) [ret setObject:length forKey:@"length"];
 	if(announce != NULL) [ret setObject:announce forKey:@"announce"];
@@ -91,7 +91,7 @@ NSDictionary *getTorrentInfo(NSURL *url)
 	if(isPrivate != NULL) [ret setObject:isPrivate forKey:@"isPrivate"];
 	if(allFiles != NULL) [ret setObject:allFiles forKey:@"files"];
 	[ret setObject:[NSNumber numberWithInteger:totalSize] forKey:@"totalSize"];
-	
+
 	return ret;
 }
 
@@ -104,30 +104,30 @@ NSData *getTorrentPreview(NSURL *url)
 																			error:NULL];
 	NSDictionary *torrentInfo = getTorrentInfo(url);
 	if (torrentInfo == nil) return nil;
-	
+
 	NSMutableString *html = [NSMutableString stringWithString:templateFile];
-	
-	
+
+
 	// Replace torrentName
 	replacer(html,
 				@"{TORRENT_NAME}",
 				[torrentInfo objectForKey:@"torrentName"],
 				@"[Unknown]");
-	
+
 	// Replace torrent size with length or totalSize
 	NSNumber *size = [torrentInfo objectForKey:@"length"];
 	if(size == NULL){
 		// Multi-file torrents don't have length, so use the total file size
 		size = [torrentInfo objectForKey:@"totalSize"];
 	}
-	
+
 	NSString *torrentInfoString = [NSString stringWithFormat:@"<ul><li>Size: %@</li></ul>",
 											 size != nil ? stringFromFileSize([size integerValue]) : @"N/D"];
 	replacer(html,
 				@"{TORRENT_INFO}",
 				torrentInfoString,
 				@"[Unknown]");
-	
+
 	// Replace files
 	NSArray *files = [torrentInfo objectForKey:@"files"];
 	if(files != nil)
@@ -149,6 +149,6 @@ NSData *getTorrentPreview(NSURL *url)
 					@"<tr><td>[Cannot list files]</td><td>N/D</td></tr>"
 					);
 	}
-	
+
 	return [html dataUsingEncoding:NSUTF8StringEncoding];
 }
