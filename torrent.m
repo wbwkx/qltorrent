@@ -1,12 +1,23 @@
 #import "torrent.h"
 #import "BEncoding.h"
 
-NSString *stringFromFileSize(NSInteger theSize)
-{
+id replaceDataByStringInObject(id obj, NSString *key, NSString *exceptionKey);
+
+NSArray *replaceDataByStringsInArray(NSArray *array, NSString *exceptionKey);
+NSMutableDictionary *replaceDataByStringsInDic(NSDictionary *dic, NSString *exceptionKey);
+
+
+NSString *stringFromFileSize(long long int theSize);
+void replacer(NSMutableString *html, NSString *replaceThis, NSString *withThis, NSString *defaultString);
+
+NSString *pathFromPathComponents(NSArray *pc);
+
+
+NSString *stringFromFileSize(long long int theSize) {
 	float floatSize = theSize;
-	
+
 	if (theSize < 1024)
-		return([NSString stringWithFormat:@"%i B", theSize]);
+		return([NSString stringWithFormat:@"%lli B", theSize]);
 	floatSize = floatSize / 1024;
 	if (floatSize < 1024)
 		return([NSString stringWithFormat:@"%1.1f KB", floatSize]);
@@ -14,18 +25,8 @@ NSString *stringFromFileSize(NSInteger theSize)
 	if (floatSize < 1024)
 		return([NSString stringWithFormat:@"%1.1f MB", floatSize]);
 	floatSize = floatSize / 1024;
-	
-	return([NSString stringWithFormat:@"%1.1f GB", floatSize]);
-}
 
-NSString *stringFromData(NSDictionary *torrent, NSString *key)
-{
-	NSData *rawkey = [torrent objectForKey:key];
-	NSString *strdata = [[[NSString alloc] initWithBytes:[rawkey bytes]
-																 length:[rawkey length]
-															  encoding:NSUTF8StringEncoding]
-								autorelease];
-	return strdata;
+	return([NSString stringWithFormat:@"%1.1f GB", floatSize]);
 }
 
 void replacer(NSMutableString *html, NSString *replaceThis, NSString *withThis, NSString *defaultString) {
@@ -36,119 +37,109 @@ void replacer(NSMutableString *html, NSString *replaceThis, NSString *withThis, 
 										range:NSMakeRange(0, [html length])];
 }
 
-NSDictionary *getTorrentInfo(NSURL *url)
-{
+id replaceDataByStringInObject(id obj, NSString *key, NSString *exceptionKey) {
+	if (![obj isKindOfClass:[NSData class]] || [key isEqual:exceptionKey]) {
+		if      ([obj isKindOfClass:[NSDictionary class]]) return replaceDataByStringsInDic(obj, exceptionKey);
+		else if ([obj isKindOfClass:[NSArray class]])      return replaceDataByStringsInArray(obj, exceptionKey);
+		else                                               return obj;
+	}
+	
+	return [[[NSString alloc] initWithData:obj encoding:NSUTF8StringEncoding] autorelease];
+}
+
+NSArray *replaceDataByStringsInArray(NSArray *array, NSString *exceptionKey) {
+	NSMutableArray *result = [NSMutableArray arrayWithCapacity:array.count];
+	
+	for (id obj in array) [result addObject:replaceDataByStringInObject(obj, nil, exceptionKey)];
+	
+	return result;
+}
+
+NSMutableDictionary *replaceDataByStringsInDic(NSDictionary *dic, NSString *exceptionKey) {
+	NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:dic.count];
+	
+	for (id key in dic.allKeys) {
+		id obj = [dic objectForKey:key];
+		[result setObject:replaceDataByStringInObject(obj, key, exceptionKey) forKey:key];
+	}
+	
+	return result;
+}
+
+NSDictionary *getTorrentInfo(NSURL *url) {
 	// Read raw file, and de-bencode
 	NSData *rawdata = [NSData dataWithContentsOfURL:url];
 	NSDictionary *torrent = [BEncoding objectFromEncodedData:rawdata];
+
+	if (![torrent isKindOfClass:[NSDictionary class]]) return nil;
 	
-	if (torrent == nil)
-		return nil;
-	
-	NSDictionary *infoData = [torrent objectForKey:@"info"];
-	
-	// Retrive interesting data
-	NSString *announce = stringFromData(torrent, @"announce");
-	
-	NSString *torrentName = stringFromData(infoData, @"name");
-	
-	NSString *length = [infoData objectForKey:@"length"];
-	
-	NSNumber *isPrivate = [NSNumber numberWithBool:[infoData objectForKey:@"private"] == NULL];
-	
-	// Get filenames/sizes
-	NSArray *filesData = [infoData objectForKey:@"files"];
-	
-	NSUInteger totalSize = 0;
-	NSMutableArray *allFiles = [NSMutableArray array];
-	for (NSDictionary *currentFileData in filesData) {
-		NSString *currentSize = [currentFileData objectForKey:@"length"];
-		
-		NSMutableDictionary *currentFile = [NSMutableDictionary dictionaryWithObject:currentSize forKey:@"length"];
-		
-		totalSize = totalSize + [currentSize integerValue];
-		
-		NSMutableString *currentFilePath = [NSMutableString string];
-		
-		// Looping over path segments"
-		for(NSData *currentSegmentData in [currentFileData objectForKey:@"path"]) {
-			NSString *currentPathSegment = [[[NSString alloc] initWithBytes:[currentSegmentData bytes]
-																						length:[currentSegmentData length]
-																					 encoding:NSUTF8StringEncoding]
-													  autorelease];
-			[currentFilePath appendFormat:@"/%@", currentPathSegment];
-		}
-		[currentFile setObject:currentFilePath forKey:@"filename"];
-		[allFiles addObject:currentFile];
-	}
-	
-	// Store interesting data in dictionary, and return it
-	
-	NSMutableDictionary *ret = [NSMutableDictionary dictionary];
-	if(length != NULL) [ret setObject:length forKey:@"length"];
-	if(announce != NULL) [ret setObject:announce forKey:@"announce"];
-	if(torrentName != NULL) [ret setObject:torrentName forKey:@"torrentName"];
-	if(isPrivate != NULL) [ret setObject:isPrivate forKey:@"isPrivate"];
-	if(allFiles != NULL) [ret setObject:allFiles forKey:@"files"];
-	[ret setObject:[NSNumber numberWithInteger:totalSize] forKey:@"totalSize"];
-	
-	return ret;
+	return replaceDataByStringsInDic([torrent objectForKey:@"info"], @"pieces");
 }
 
-NSData *getTorrentPreview(NSURL *url)
+NSString *pathFromPathComponents(NSArray *pc) {
+	if (pc.count == 0) return @"[Unknown File Name]";
+	
+	NSMutableString *result = [NSMutableString stringWithCapacity:[[pc objectAtIndex:0] length] * pc.count];
+	for (NSString *curPathComponent in pc) {
+		[result appendString:@"/"];
+		[result appendString:curPathComponent];
+	}
+	
+	return result;
+}
+
+// FLFL: tempFile argument is for tests only
+NSData *getTorrentPreview(NSURL *url, NSString *tempFile)
 {
-	// Load template HTML
-	NSString *templateFile = [NSString stringWithContentsOfFile:[[NSBundle bundleWithIdentifier: @"com.github.sillage.qltorrent"]
-																					 pathForResource:@"torrentpreview" ofType:@"html"]
+	/* Load HTML Template */
+	NSString *templateFile = [NSString stringWithContentsOfFile:
+									  [[NSBundle bundleWithIdentifier:@"com.github.sillage.qltorrent"] pathForResource:@"torrentpreview" ofType:@"html"]
 																		encoding:NSUTF8StringEncoding
 																			error:NULL];
+	/* FLFL: line below is for tests only */
+	if (templateFile == nil) templateFile = tempFile;
+	
 	NSDictionary *torrentInfo = getTorrentInfo(url);
 	if (torrentInfo == nil) return nil;
-	
+
 	NSMutableString *html = [NSMutableString stringWithString:templateFile];
 	
-	
-	// Replace torrentName
-	replacer(html,
-				@"{TORRENT_NAME}",
-				[torrentInfo objectForKey:@"torrentName"],
-				@"[Unknown]");
-	
-	// Replace torrent size with length or totalSize
-	NSNumber *size = [torrentInfo objectForKey:@"length"];
-	if(size == NULL){
-		// Multi-file torrents don't have length, so use the total file size
-		size = [torrentInfo objectForKey:@"totalSize"];
-	}
-	
-	NSString *torrentInfoString = [NSString stringWithFormat:@"<ul><li>Size: %@</li></ul>",
-											 size != nil ? stringFromFileSize([size integerValue]) : @"N/D"];
-	replacer(html,
-				@"{TORRENT_INFO}",
-				torrentInfoString,
-				@"[Unknown]");
-	
-	// Replace files
+//	BOOL isPrivate = ([torrentInfo objectForKey:@"private"] == nil);
+
+	/* Replace torrent name */
+	replacer(html, @"{TORRENT_NAME}", [torrentInfo objectForKey:@"name"], @"[Unknown]");
+
+	long long int totalSize = 0;
 	NSArray *files = [torrentInfo objectForKey:@"files"];
-	if(files != nil)
-	{
-		NSMutableString *torrentFileString = [NSMutableString string];
-		for(NSDictionary *currentFile in files)
-		{
-			NSString *currentName = [currentFile objectForKey:@"filename"];
-			NSString *currentSizeData = [currentFile objectForKey:@"length"];
-			NSString *currentSize = [NSString stringWithFormat:@"%@", currentSizeData == nil ? @"N/D" : stringFromFileSize([currentSizeData integerValue])];
-			[torrentFileString appendString:[NSString stringWithFormat: @"<tr><td>%@</td><td>%@</td></tr>\n",
-														currentName,
-														currentSize]
-			 ];
+	NSMutableString *torrentFileString = [NSMutableString string];
+	if (files != nil) {
+		for (NSDictionary *curFile in [torrentInfo objectForKey:@"files"]) {
+			NSString *currentSize = @"N/D";
+			NSNumber *nn = [curFile objectForKey:@"length"];
+			if (nn != nil) {
+				long long int n = [nn longLongValue];
+				totalSize += n;
+				currentSize = stringFromFileSize(n);
+			}
+			NSArray *currentPathComponents = [curFile objectForKey:@"path"];
+			
+			[torrentFileString appendString:
+			 [NSString stringWithFormat:@"<tr><td>%@</td><td>%@</td></tr>\n",
+			  pathFromPathComponents(currentPathComponents),
+			  currentSize]];
 		}
-		replacer(html,
-					@"{TORRENT_FILES}",
-					torrentFileString,
-					@"<tr><td>[Cannot list files]</td><td>N/D</td></tr>"
-					);
+	}
+	replacer(html, @"{TORRENT_FILES}", torrentFileString,
+				@"<tr><td>[Cannot list files]</td><td>N/D</td></tr>");
+	
+	if (totalSize == 0) {
+		NSNumber *n = [torrentInfo objectForKey:@"length"];
+		if (n != nil) totalSize = [n longLongValue];
+		else          totalSize = -1;
 	}
 	
+	NSString *torrentInfoString = [NSString stringWithFormat:@"<ul><li>Size: %@</li></ul>", totalSize != -1? stringFromFileSize(totalSize): @"N/D"];
+	replacer(html, @"{TORRENT_INFO}", torrentInfoString, @"[Unknown]");
+
 	return [html dataUsingEncoding:NSUTF8StringEncoding];
 }
