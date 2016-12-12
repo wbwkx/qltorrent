@@ -4,6 +4,13 @@
 #include <Cocoa/Cocoa.h>
 #include "torrent.h"
 
+
+
+
+
+OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options);
+void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview);
+
 /* -----------------------------------------------------------------------------
  Generate a preview for file
 
@@ -12,7 +19,7 @@
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
-	NSLog(@"Quicklook torrent thingy going!");
+//    fprintf(stderr,"%s\n", "wuten enter into preview init");
 	CFDataRef data = (CFDataRef) getTorrentPreview((NSURL *)url, nil);
 	if(data){
 		CFDictionaryRef props = (CFDictionaryRef) [NSDictionary dictionary];
@@ -30,6 +37,5 @@ void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview)
 {
 	// implement only if supported
 	// avoid warnings
-	thisInterface = NULL;
-	preview = NULL;
+
 }

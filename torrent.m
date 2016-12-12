@@ -38,7 +38,7 @@ void replacer(NSMutableString *html, NSString *replaceThis, NSString *withThis, 
 }
 
 id replaceDataByStringInObject(id obj, NSString *key, NSString *exceptionKey) {
-	if (![obj isKindOfClass:[NSData class]] || [key isEqual:exceptionKey]) {
+	if (![obj isKindOfClass:[NSData class]] || [key isEqual:exceptionKey] || (obj == nil)) {
 		if      ([obj isKindOfClass:[NSDictionary class]]) return replaceDataByStringsInDic(obj, exceptionKey);
 		else if ([obj isKindOfClass:[NSArray class]])      return replaceDataByStringsInArray(obj, exceptionKey);
 		else                                               return obj;
@@ -60,7 +60,12 @@ NSMutableDictionary *replaceDataByStringsInDic(NSDictionary *dic, NSString *exce
 	
 	for (id key in dic.allKeys) {
 		id obj = [dic objectForKey:key];
-		[result setObject:replaceDataByStringInObject(obj, key, exceptionKey) forKey:key];
+        id wb = replaceDataByStringInObject(obj, key, exceptionKey);
+        if(wb == nil)
+        {
+            continue;
+        }
+		[result setObject:wb forKey:key];
 	}
 	
 	return result;
@@ -93,7 +98,7 @@ NSData *getTorrentPreview(NSURL *url, NSString *tempFile)
 {
 	/* Load HTML Template */
 	NSString *templateFile = [NSString stringWithContentsOfFile:
-									  [[NSBundle bundleWithIdentifier:@"com.github.sillage.qltorrent"] pathForResource:@"torrentpreview" ofType:@"html"]
+									  [[NSBundle bundleWithIdentifier:@"com.wuten.qlook.qltorrent"] pathForResource:@"torrentpreview" ofType:@"html"]
 																		encoding:NSUTF8StringEncoding
 																			error:NULL];
 	/* FLFL: line below is for tests only */

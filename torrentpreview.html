@@ -1,60 +1,78 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-  <head>
+
+<head>
     <title>qltorrent</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <style type="text/css" media="screen">
-        html,body{
-            margin:0;
-            padding:0;
-        }
-        html{
-            background-color:rgb(11%,11%,11%);
-            color:#ccc;
-        }
-        #title{
-            background:#111;
-            color:#666;
-            padding-bottom:.2em;
-            margin-bottom:1em;
-        }
-        #title #torrentname h2{
-            line-height:1em;
-            background:#000;
-            color:#273F51;
-            padding:.2em;
-            padding-left:1em;
-        }
-        #main{
-            clear:both;
-            border:0;
-            width:40em;
-            margin-left:auto;
-            margin-right:auto;
-        }
-        #size{
-            width:7em;
-        }
-        .odd{
-            background:#222;
-        }
-        .even{
-            background:#333;
-        }
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    html {
+        background-color: rgb(11%, 11%, 11%);
+        color: #ccc;
+    }
+    
+    #title {
+        background: #000;
+        color: #000;
+        font: monospace;
+        padding-bottom: .2em;
+        margin-bottom: 1em;
+    }
+    /*#title */
+    
+    #torrentname h2 {
+        line-height: 2em;
+        font: monospace;
+        font-size: medium;
+        padding: .2em;
+        padding-left: 2em;
+    }
+    
+    #main {
+        clear: both;
+        border: 0;
+        font: monospace;
+        width: 40em;
+        margin-left: 2em;
+        margin-right: auto;
+    }
+    
+    #size {
+        width: 3em;
+        font: monospace;
+    }
+    
+    .odd {
+        background: #222;
+    }
+    
+    .even {
+        background: #333;
+    }
     </style>
-  </head>
-  <body>
-    <div id="title">
-      <div id="torrentname">
+</head>
+
+<body>
+    <!-- <div id="title"> -->
+    <div id="torrentname">
         <h2>{TORRENT_NAME}</h2>
-      </div>
-      <div id="info">
-        {TORRENT_INFO}
-      </div>
     </div>
+    <div id="info">
+        {TORRENT_INFO}
+    </div>
+    <!-- </div> -->
     <table id="main">
-      <tr><th>File Name</th><th id="size">Size</th></tr>
-      {TORRENT_FILES}
+        <tr>
+            <th></th>
+            <th id="size"></th>
+        </tr>
+        {TORRENT_FILES}
     </table>
-  </body>
+</body>
+
 </html>

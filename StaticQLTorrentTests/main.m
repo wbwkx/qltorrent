@@ -78,9 +78,12 @@ int main (int argc, const char *argv[]) {
 		fprintf(stderr, "Usage: %s url\n", argv[0]);
 		return 42;
 	}
+    
+    fprintf(stderr, "file: %s \n",argv[1]);
 	
 	NSAutoreleasePool *pool = [NSAutoreleasePool new];
 	NSData *torrentPreview = getTorrentPreview([NSURL URLWithString:[NSString stringWithCString:argv[1] encoding:NSUTF8StringEncoding]], torrentHTML);
+     fprintf(stderr, "step 1 \n");
 	NSLog(@"%@", [[[NSString alloc] initWithData:torrentPreview encoding:NSUTF8StringEncoding] autorelease]);
 	[pool drain]; pool = nil;
 	
