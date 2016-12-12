@@ -40,6 +40,7 @@ A detailed specification wiki maintained by the development community:
 Article about _Bencode_ on [Wikipedia][wikipedia].
 
 [qltorrent]: https://github.com/wbwkx/qltorrent/releases/download/v1.0/qltorrent.qlgenerator.zip
+
 [framework]: https://code.google.com/p/cocoabtutils/
 [bep3]: http://bittorrent.org/beps/bep_0003.html
 [torrentspec]: http://wiki.theory.org/BitTorrentSpecification
